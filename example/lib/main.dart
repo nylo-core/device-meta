@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:device_meta/device_meta.dart';
 
 void main() async {
-  DeviceMeta deviceMeta = await DeviceMeta.init(storageKey: "storageKey2");
+  DeviceMeta deviceMeta = await DeviceMeta.init(storageKey: "example");
   print(['deviceMeta.toJson', deviceMeta.toJson()]);
 
   runApp(MyApp());
