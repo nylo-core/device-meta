@@ -1,5 +1,8 @@
 # Device Meta
 
+[![pub package](https://img.shields.io/pub/v/device_meta.svg)](https://pub.dartlang.org/packages/device_meta)
+[![License: MIT](https://img.shields.io/badge/license-MIT-purple.svg)](https://opensource.org/licenses/MIT)
+
 Handle device info in Flutter. 
 
 This package will allow you to get the device name, model, brand, manufacturer, uuid, version, platform type and user agent.
@@ -28,10 +31,9 @@ import 'package:device_meta/device_meta.dart';
 
 DeviceMeta deviceMeta = await DeviceMeta.init(storageKey: "exampleapp");
 
-deviceMeta.name // Joe Doe's iPhone
+deviceMeta.name // iPhone
 deviceMeta.model // iPhone 15 Pro
-deviceMeta.brand // iPhone
-deviceMeta.manufacturer // Apple
+deviceMeta.brand // Apple
 deviceMeta.uuid // 00000000-0000-0000-0000-000000000000
 deviceMeta.version // 1.0.0
 deviceMeta.platformType // iOS

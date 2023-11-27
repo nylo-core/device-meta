@@ -121,6 +121,8 @@ class DeviceMeta {
         "platform_type": "ios",
         "country_code": countryCode
       };
+      print('hehhe');
+      print(deviceMeta);
     }
 
     if (UniversalPlatform.isWeb) {
