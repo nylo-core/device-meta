@@ -25,8 +25,6 @@ class DeviceMeta {
   String? userAgent;
   String? countryCode;
 
-  DeviceMeta();
-
   /// Initialize the device meta
   static Future<DeviceMeta> init(
       {required String storageKey,
@@ -121,8 +119,6 @@ class DeviceMeta {
         "platform_type": "ios",
         "country_code": countryCode
       };
-      print('hehhe');
-      print(deviceMeta);
     }
 
     if (UniversalPlatform.isWeb) {
