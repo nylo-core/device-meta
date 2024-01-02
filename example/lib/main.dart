@@ -1,11 +1,14 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:device_meta/device_meta.dart';
 
 void main() async {
   DeviceMeta deviceMeta = await DeviceMeta.init(storageKey: "example");
-  print(['deviceMeta.toJson', deviceMeta.toJson()]);
+  if (kDebugMode) {
+    print(['deviceMeta.toJson', deviceMeta.toJson()]);
+  }
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -38,17 +41,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     DeviceMeta deviceMeta = DeviceMeta.instance;
     return Scaffold(
-      appBar: AppBar(title: Text("Device Meta")),
+      appBar: AppBar(title: const Text("Device Meta")),
       body: SafeArea(
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           width: double.infinity,
           child: ListView(
             shrinkWrap: true,
             children: [
               Text("Device meta",
                   style: Theme.of(context).textTheme.displaySmall),
-              Divider(),
+              const Divider(),
               Text("Model: ${deviceMeta.model}"),
               Text("Version: ${deviceMeta.version}"),
               Text("Brand: ${deviceMeta.brand}"),
