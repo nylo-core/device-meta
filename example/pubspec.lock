@@ -79,7 +79,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.1.1"
+    version: "1.1.2"
   dio:
     dependency: transitive
     description:
@@ -272,10 +272,10 @@ packages:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: "8d715ae34a773e25fcc94118d0f351d952708f99ecdeb7b0f6af2f7a63c1f57e"
+      sha256: "1599c99829be2dca30420a5b9d2f1c7b389fda7c484ccdf9a2a46af0be3274bb"
       url: "https://pub.dev"
     source: hosted
-    version: "5.25.1"
+    version: "5.31.0"
   page_transition:
     dependency: transitive
     description:
@@ -444,6 +444,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  skeletonizer:
+    dependency: transitive
+    description:
+      name: skeletonizer
+      sha256: "86f373126d9a887a2d63f2463a9913a973ce7f282efa7f0d9d06a17e3f19838c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -1,3 +1,7 @@
+## [1.1.2] - 2024-01-01
+
+* Update pubspec.yaml
+
 ## [1.1.1] - 2023-12-04
 
 * Update license date
