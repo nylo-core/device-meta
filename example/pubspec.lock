@@ -120,6 +120,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "7.0.0"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -272,10 +280,10 @@ packages:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: "1599c99829be2dca30420a5b9d2f1c7b389fda7c484ccdf9a2a46af0be3274bb"
+      sha256: "65846df5fd7bb32070302f7f2d8bcaccbe607b61b19322da4ee89357838e6242"
       url: "https://pub.dev"
     source: hosted
-    version: "5.31.0"
+    version: "5.32.0"
   page_transition:
     dependency: transitive
     description:
@@ -541,10 +549,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "22c94e5ad1e75f9934b766b53c742572ee2677c56bc871d850a57dad0f82127f"
+      sha256: cd210a09f7c18cbe5a02511718e0334de6559871052c90a90c0cca46a4aa81c8
       url: "https://pub.dev"
     source: hosted
-    version: "4.2.2"
+    version: "4.3.3"
   validated:
     dependency: transitive
     description:

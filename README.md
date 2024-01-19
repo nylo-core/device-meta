@@ -15,7 +15,7 @@ Add the following to your `pubspec.yaml` file:
 
 ``` yaml
 dependencies:
-  device_meta: ^1.1.2
+  device_meta: ^1.1.3
 ```
 
 or with Dart:
