@@ -79,7 +79,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.1.5"
+    version: "1.1.7"
   dio:
     dependency: transitive
     description:
@@ -202,6 +202,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.0"
+  flutter_staggered_grid_view:
+    dependency: transitive
+    description:
+      name: flutter_staggered_grid_view
+      sha256: "19e7abb550c96fbfeb546b23f3ff356ee7c59a019a651f8f102a4ba9b7349395"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.7.0"
   flutter_styled_toast:
     dependency: transitive
     description:
@@ -280,10 +288,10 @@ packages:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: "66204a3de32be4c292043f1e2aaedffa78641ae4ba0b53f282172cff9fae098a"
+      sha256: e2ba148a93914bf93763b9c68ca40155fa215cb418f4f4423f99a59578f41c4a
       url: "https://pub.dev"
     source: hosted
-    version: "5.42.1"
+    version: "5.44.0"
   page_transition:
     dependency: transitive
     description:
