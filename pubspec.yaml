@@ -1,6 +1,6 @@
 name: device_meta
 description: "Basic information about the user's device. Fetch the device's model, manufacturer, operating system, version and more."
-version: 1.1.11
+version: 1.1.12
 homepage: https://nylo.dev
 repository: https://github.com/nylo-core/device_meta
 funding:
@@ -17,7 +17,7 @@ environment:
 dependencies:
   device_info_plus: ^9.1.2
   uuid: ^4.3.3
-  nylo_support: ^5.50.0
+  nylo_support: ^5.53.0
   flutter:
     sdk: flutter
   universal_platform: ^1.0.0+1
