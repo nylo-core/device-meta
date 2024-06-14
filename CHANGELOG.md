@@ -1,3 +1,7 @@
+## [1.1.28] - 2024-06-15
+
+* Update pubspec.yaml
+
 ## [1.1.27] - 2024-06-06
 
 * Update pubspec.yaml
