@@ -1,10 +1,8 @@
-library device_meta;
-
 import 'dart:math';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:nylo_support/helpers/extensions.dart';
-import 'package:nylo_support/helpers/helper.dart';
+import 'package:nylo_support/local_storage/local_storage.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:uuid/uuid.dart';
 
@@ -164,7 +162,7 @@ Future<String?> getUUID(String storageKey) async {
 
 /// Store the device uuid
 _storeUUID(String uuid, String storageKey) async {
-  await NyStorage.store(storageKey, uuid);
+  await NyStorage.save(storageKey, uuid);
 }
 
 /// Build the device uuid
