@@ -1,3 +1,7 @@
+## [2.0.1] - 2024-11-08
+
+* Update pubspec.yaml
+
 ## [2.0.0] - 2024-11-06
 
 * Update project for nylo_support v6
