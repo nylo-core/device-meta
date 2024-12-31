@@ -15,7 +15,7 @@ Add the following to your `pubspec.yaml` file:
 
 ``` yaml
 dependencies:
-  device_meta: ^2.0.5
+  device_meta: ^2.1.0
 ```
 
 or with Dart:
@@ -32,7 +32,7 @@ import 'package:device_meta/device_meta.dart';
 DeviceMeta deviceMeta = await DeviceMeta.init(storageKey: "exampleapp");
 
 deviceMeta.name // iPhone
-deviceMeta.model // iPhone 15 Pro
+deviceMeta.model // iPhone 16 Pro
 deviceMeta.brand // Apple
 deviceMeta.uuid // 00000000-0000-0000-0000-000000000000
 deviceMeta.version // 1.0.0
