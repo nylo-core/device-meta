@@ -1,3 +1,7 @@
+## [2.1.1] - 2025-01-05
+
+* Update pubspec.yaml
+
 ## [2.1.0] - 2024-12-31
 
 * Update copyright year
