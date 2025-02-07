@@ -5,10 +5,10 @@ packages:
     dependency: transitive
     description:
       name: animate_do
-      sha256: "7a3162729f0ea042f9dd84da217c5bde5472ad9cef644079929d4304a5dc4ca0"
+      sha256: f517dec9c98c1ea2c6e82e172ac138f6b102394a8e843b74bd18f665858e8c1c
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.4"
+    version: "3.3.7"
   app_badge_plus:
     dependency: transitive
     description:
@@ -101,10 +101,10 @@ packages:
     dependency: transitive
     description:
       name: date_field
-      sha256: "921246e5e8fb8e22c82e234de48dde27f9c739071a38dac666258909fd2f7b14"
+      sha256: "5714b1ac0ba1c860877b3040601a6fd20cb846042c9ae6d8216ffede422d43d1"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.3+1"
   dbus:
     dependency: transitive
     description:
@@ -117,10 +117,10 @@ packages:
     dependency: transitive
     description:
       name: device_info_plus
-      sha256: "4fa68e53e26ab17b70ca39f072c285562cfc1589df5bb1e9295db90f6645f431"
+      sha256: e3fc9a65820fef83035af8ee8c09004a719d5d1d54e6de978fcb0d84bbeb241a
       url: "https://pub.dev"
     source: hosted
-    version: "11.2.0"
+    version: "11.2.2"
   device_info_plus_platform_interface:
     dependency: transitive
     description:
@@ -135,15 +135,15 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.1.2"
+    version: "2.1.3"
   dio:
     dependency: transitive
     description:
       name: dio
-      sha256: "5598aa796bbf4699afd5c67c0f5f6e2ed542afc956884b9cd58c306966efc260"
+      sha256: "253a18bbd4851fecba42f7343a1df3a9a4c1d31a2c1b37e221086b4fa8c8dbc9"
       url: "https://pub.dev"
     source: hosted
-    version: "5.7.0"
+    version: "5.8.0+1"
   dio_web_adapter:
     dependency: transitive
     description:
@@ -164,10 +164,10 @@ packages:
     dependency: transitive
     description:
       name: error_stack
-      sha256: "9b4b685fbee04cc4a72f0791663caac5838585d32f83e15ab64f9c8957ec506b"
+      sha256: ffa61cf73940d61d501c97d14421a2ad7d3a2809fa38bb5c81ef3acee6f131a0
       url: "https://pub.dev"
     source: hosted
-    version: "1.10.1"
+    version: "1.10.2"
   fake_async:
     dependency: transitive
     description:
@@ -331,10 +331,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_timezone
-      sha256: "6e6a0a9d0dfc049b209e01e1dee3efd5ff2ddf2375e9de86589761b244eb5a5f"
+      sha256: bc286cecb0366d88e6c4644e3962ebd1ce1d233abc658eb1e0cd803389f84b64
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "4.1.0"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -344,10 +344,10 @@ packages:
     dependency: transitive
     description:
       name: get_time_ago
-      sha256: "0f50a87080a720f5491266a3f7c79109f95943decd10b66c84b5aef802f1d959"
+      sha256: "1bf7bebe32e070e2a5aa9a84ee401c88895de337e9e168e70416ec3373771243"
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.1"
+    version: "2.2.0"
   http:
     dependency: transitive
     description:
@@ -448,10 +448,10 @@ packages:
     dependency: transitive
     description:
       name: nylo_support
-      sha256: "28707d9a8b3a71f820ce367e708139e3d3ac32e83e7af5c7f2d519533f78003f"
+      sha256: fcec6528167d8ca4d0c8b3f989b1202f4ea5fdc8487826ba1517adb95574a94c
       url: "https://pub.dev"
     source: hosted
-    version: "6.15.0"
+    version: "6.19.1"
   path:
     dependency: transitive
     description:
