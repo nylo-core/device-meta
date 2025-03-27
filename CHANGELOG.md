@@ -1,3 +1,7 @@
+## [2.1.5] - 2025-03-27
+
+* Update pubspec.yaml
+
 ## [2.1.4] - 2025-02-27
 
 * Update GitHub workflows
