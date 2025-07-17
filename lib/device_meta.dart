@@ -35,7 +35,7 @@ class DeviceMeta {
   }
 
   /// Set the device meta from a [data] json map
-  fromJson(Map<String, dynamic> data) {
+  void fromJson(Map<String, dynamic> data) {
     name = data['name'];
     model = data['model'];
     brand = data['brand'];
@@ -109,7 +109,8 @@ class DeviceMeta {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       deviceMeta = {
         "name": iosDeviceInfo.name.replaceAll(RegExp('[^\u0001-\u007F]'), '_'),
-        "model": iosDeviceInfo.model,
+        "model":
+            iosDeviceInfo.modelName.replaceAll(RegExp('[^\u0001-\u007F]'), '_'),
         "brand": "Apple",
         "manufacturer": "Apple",
         "version": iosDeviceInfo.systemVersion,
@@ -161,7 +162,7 @@ Future<String?> getUUID(String storageKey) async {
 }
 
 /// Store the device uuid
-_storeUUID(String uuid, String storageKey) async {
+Future<void> _storeUUID(String uuid, String storageKey) async {
   await NyStorage.save(storageKey, uuid);
 }
 
