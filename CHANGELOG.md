@@ -1,3 +1,7 @@
+## [2.1.9] - 2025-09-06
+
+* Update pubspec.yaml
+
 ## [2.1.8] - 2025-07-17
 
 * Fix `model` for IOS
