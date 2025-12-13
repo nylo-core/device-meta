@@ -1,8 +1,8 @@
 import 'dart:math';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:nylo_support/helpers/extensions.dart';
-import 'package:nylo_support/local_storage/local_storage.dart';
+import 'package:nylo_support/helpers/ny_helpers.dart';
+import 'package:nylo_support/local_storage/ny_local_storage.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:uuid/uuid.dart';
 

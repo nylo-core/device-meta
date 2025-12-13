@@ -15,8 +15,8 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  device_info_plus: ^11.5.0
-  uuid: ^4.5.1
+  device_info_plus: ^12.3.0
+  uuid: ^4.5.2
   nylo_support: ^6.35.1
   universal_platform: ^1.1.0
   flutter:
@@ -26,6 +26,12 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+
+dependency_overrides:
+#  nylo_framework:
+#    path: /Users/anthony/StudioProjects/framework
+  nylo_support:
+    path: /Users/anthony/StudioProjects/support
 
 flutter:
 
