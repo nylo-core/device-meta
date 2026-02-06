@@ -1,6 +1,29 @@
-## [3.0.0] - 2025-12-13
+## [3.0.0] - 2026-02-06
 
-* Update pubspec.yaml
+### Added
+* macOS platform support
+* Windows platform support
+* Linux platform support
+* `country_code` field now included in `toJson()` output
+* Comprehensive unit tests for `DeviceMeta` class
+
+### Changed
+* Replaced `nylo_support` dependency with `flutter_secure_storage` for UUID persistence
+* Upgraded `device_info_plus` dependency to `^12.3.0`
+* Upgraded `flutter_lints` to `^6.0.0`
+* Moved UUID helper functions inside `DeviceMeta` class as private static methods
+* Changed import from `flutter/material.dart` to `flutter/widgets.dart` (lighter dependency)
+* Extracted reserved keys into a static const `_reservedKeys` list
+* Extracted non-ASCII regex into a static `_nonAsciiRegex` constant
+* Improved `_randomStr()` to use `Random.secure()` and `StringBuffer` for better security and performance
+* Refactored platform detection from separate `if` statements to `if-else if` chain
+* Added explicit `void` return type to `fromJson()`
+* Updated iOS model field to use `modelName` instead of `model`
+* Updated copyright year in LICENSE
+
+### Removed
+* `nylo_support` dependency - replaced with direct `flutter_secure_storage` usage
+* Public `getUUID()` top-level function (now private static method `_getUUID()` inside `DeviceMeta`)
 
 ## [2.1.9] - 2025-09-06
 

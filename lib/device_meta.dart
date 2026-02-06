@@ -1,8 +1,7 @@
 import 'dart:math';
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:flutter/material.dart';
-import 'package:nylo_support/helpers/ny_helpers.dart';
-import 'package:nylo_support/local_storage/ny_local_storage.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:universal_platform/universal_platform.dart';
 import 'package:uuid/uuid.dart';
 
@@ -11,6 +10,25 @@ class DeviceMeta {
   DeviceMeta._privateConstructor();
 
   static final DeviceMeta instance = DeviceMeta._privateConstructor();
+
+  /// Secure storage instance for UUID persistence
+  static const _storage = FlutterSecureStorage();
+
+  /// Regex to remove non-ASCII characters
+  static final _nonAsciiRegex = RegExp('[^\u0001-\u007F]');
+
+  /// Reserved keys for device meta properties
+  static const _reservedKeys = [
+    'name',
+    'model',
+    'brand',
+    'manufacturer',
+    'version',
+    'uuid',
+    'platform_type',
+    'user_agent',
+    'country_code'
+  ];
 
   String? name;
   String? model;
@@ -45,19 +63,9 @@ class DeviceMeta {
     platformType = data['platform_type'];
     userAgent = data['user_agent'];
     countryCode = data['country_code'];
-    metaData = data.entries.where((info) {
-      return ![
-        'name',
-        'model',
-        'brand',
-        'manufacturer',
-        'version',
-        'uuid',
-        'platform_type',
-        'user_agent',
-        'country_code'
-      ].contains(info.key);
-    }).toMap();
+    metaData = Map.fromEntries(data.entries.where((info) {
+      return !_reservedKeys.contains(info.key);
+    }));
   }
 
   /// to json map
@@ -70,7 +78,8 @@ class DeviceMeta {
       "version": version,
       "uuid": uuid,
       "platform_type": platformType,
-      "user_agent": userAgent
+      "user_agent": userAgent,
+      "country_code": countryCode
     };
 
     deviceMeta.addAll(metaData);
@@ -85,7 +94,7 @@ class DeviceMeta {
     Map<String, dynamic> deviceMeta = {};
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
 
-    String? uuid = await getUUID(storageKey);
+    String? uuid = await _getUUID(storageKey);
 
     String? countryCode =
         WidgetsBinding.instance.platformDispatcher.locale.countryCode;
@@ -95,22 +104,18 @@ class DeviceMeta {
       deviceMeta = {
         "name": androidDeviceInfo.device,
         "model": androidDeviceInfo.model,
-        "brand":
-            androidDeviceInfo.brand.replaceAll(RegExp('[^\u0001-\u007F]'), '_'),
+        "brand": androidDeviceInfo.brand.replaceAll(_nonAsciiRegex, '_'),
         "manufacturer": androidDeviceInfo.manufacturer,
         "version": androidDeviceInfo.version.sdkInt.toString(),
         "uuid": uuid,
         "platform_type": "android",
         "country_code": countryCode
       };
-    }
-
-    if (UniversalPlatform.isIOS) {
+    } else if (UniversalPlatform.isIOS) {
       IosDeviceInfo iosDeviceInfo = await deviceInfo.iosInfo;
       deviceMeta = {
-        "name": iosDeviceInfo.name.replaceAll(RegExp('[^\u0001-\u007F]'), '_'),
-        "model":
-            iosDeviceInfo.modelName.replaceAll(RegExp('[^\u0001-\u007F]'), '_'),
+        "name": iosDeviceInfo.name.replaceAll(_nonAsciiRegex, '_'),
+        "model": iosDeviceInfo.modelName.replaceAll(_nonAsciiRegex, '_'),
         "brand": "Apple",
         "manufacturer": "Apple",
         "version": iosDeviceInfo.systemVersion,
@@ -118,9 +123,7 @@ class DeviceMeta {
         "platform_type": "ios",
         "country_code": countryCode
       };
-    }
-
-    if (UniversalPlatform.isWeb) {
+    } else if (UniversalPlatform.isWeb) {
       WebBrowserInfo webBrowserInfo = await deviceInfo.webBrowserInfo;
 
       deviceMeta = {
@@ -132,6 +135,42 @@ class DeviceMeta {
         "uuid": uuid,
         "user_agent": webBrowserInfo.userAgent,
         "platform_type": "web",
+        "country_code": countryCode
+      };
+    } else if (UniversalPlatform.isMacOS) {
+      MacOsDeviceInfo macOsDeviceInfo = await deviceInfo.macOsInfo;
+      deviceMeta = {
+        "name": macOsDeviceInfo.computerName,
+        "model": macOsDeviceInfo.model,
+        "brand": "Apple",
+        "manufacturer": "Apple",
+        "version": macOsDeviceInfo.osRelease,
+        "uuid": uuid,
+        "platform_type": "macos",
+        "country_code": countryCode
+      };
+    } else if (UniversalPlatform.isWindows) {
+      WindowsDeviceInfo windowsDeviceInfo = await deviceInfo.windowsInfo;
+      deviceMeta = {
+        "name": windowsDeviceInfo.computerName,
+        "model": windowsDeviceInfo.productName,
+        "brand": "Microsoft",
+        "manufacturer": "n/a",
+        "version": windowsDeviceInfo.displayVersion,
+        "uuid": uuid,
+        "platform_type": "windows",
+        "country_code": countryCode
+      };
+    } else if (UniversalPlatform.isLinux) {
+      LinuxDeviceInfo linuxDeviceInfo = await deviceInfo.linuxInfo;
+      deviceMeta = {
+        "name": linuxDeviceInfo.name,
+        "model": linuxDeviceInfo.prettyName,
+        "brand": "n/a",
+        "manufacturer": "n/a",
+        "version": linuxDeviceInfo.version ?? "n/a",
+        "uuid": uuid,
+        "platform_type": "linux",
         "country_code": countryCode
       };
     }
@@ -148,38 +187,38 @@ class DeviceMeta {
     }
     return metaData[key];
   }
-}
 
-/// Get the device uuid
-Future<String?> getUUID(String storageKey) async {
-  String? uuid = await NyStorage.read(storageKey);
-  if (uuid == null) {
-    String uuId = _buildUUID();
-    await _storeUUID(uuId, storageKey);
-    return uuId;
+  /// Get the device uuid
+  static Future<String?> _getUUID(String storageKey) async {
+    String? uuid = await _storage.read(key: storageKey);
+    if (uuid == null) {
+      String newUuid = _buildUUID();
+      await _storeUUID(newUuid, storageKey);
+      return newUuid;
+    }
+    return uuid;
   }
-  return uuid;
-}
 
-/// Store the device uuid
-Future<void> _storeUUID(String uuid, String storageKey) async {
-  await NyStorage.save(storageKey, uuid);
-}
-
-/// Build the device uuid
-String _buildUUID() {
-  var uuid = const Uuid();
-  String idD = uuid.v1();
-  return "${idD}_${_randomStr(4)}";
-}
-
-/// Generate a random string
-String _randomStr(int strLen) {
-  const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
-  Random rnd = Random(DateTime.now().millisecondsSinceEpoch);
-  String result = "";
-  for (var i = 0; i < strLen; i++) {
-    result += chars[rnd.nextInt(chars.length)];
+  /// Store the device uuid
+  static Future<void> _storeUUID(String uuid, String storageKey) async {
+    await _storage.write(key: storageKey, value: uuid);
   }
-  return result;
+
+  /// Build the device uuid
+  static String _buildUUID() {
+    var uuid = const Uuid();
+    String id = uuid.v1();
+    return "${id}_${_randomStr(4)}";
+  }
+
+  /// Generate a random string
+  static String _randomStr(int strLen) {
+    const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+    Random rnd = Random.secure();
+    StringBuffer result = StringBuffer();
+    for (var i = 0; i < strLen; i++) {
+      result.write(chars[rnd.nextInt(chars.length)]);
+    }
+    return result.toString();
+  }
 }
