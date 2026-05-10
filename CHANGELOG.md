@@ -1,3 +1,10 @@
+## [3.0.1] - 2026-05-10
+
+### Changed
+* Upgraded `device_info_plus` dependency to `^12.4.0`
+* Upgraded `uuid` dependency to `^4.5.3`
+* Upgraded `flutter_secure_storage` dependency to `^10.1.0`
+
 ## [3.0.0] - 2026-02-06
 
 ### Added
