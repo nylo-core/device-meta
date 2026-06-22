@@ -1,3 +1,8 @@
+## [3.0.3] - 2026-06-22
+
+### Changed
+* Upgraded `flutter_secure_storage` dependency to `^10.3.1`
+
 ## [3.0.2] - 2026-05-23
 
 ### Changed
