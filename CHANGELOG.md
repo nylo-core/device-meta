@@ -1,3 +1,9 @@
+## [3.0.4] - 2026-08-02
+
+### Changed
+* Upgraded `device_info_plus` dependency to `^13.2.0`
+* Upgraded `uuid` dependency to `^4.6.0`
+
 ## [3.0.3] - 2026-06-22
 
 ### Changed
